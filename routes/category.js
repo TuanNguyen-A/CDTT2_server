@@ -6,6 +6,7 @@ const { validateBody, validateParam, schemas } = require('../helpers/routerHelpe
 const CategoryController = require('../controllers/category')
 
 
-router.route('add').post(CategoryController.add)
+router.route('/add').post(CategoryController.add)
+router.route('/list').post(CategoryController.index)
 
 module.exports = router;

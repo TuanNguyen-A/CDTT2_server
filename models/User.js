@@ -22,7 +22,9 @@ const UserSchema = new Schema({
     address: {
       type: String
     }
-})
+}, {
+  timestamps: true,
+});
 
 UserSchema.pre('save', async function(next) {
   try {
