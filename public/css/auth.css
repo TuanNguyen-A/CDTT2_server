@@ -1,0 +1,215 @@
+*{
+    background: white;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+li{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+header{
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 0px 12px 50px;
+    height: 70px;
+    align-items: center;
+    border-bottom: 1px solid #d8c3c3;
+}
+.logo{
+    flex: 1;
+}
+.logo > a{
+    font-size: 35px;
+    font-weight: bold;
+    color: rgb(211, 36, 60);
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.menu{
+    flex: 3;
+}
+.menu > ul{
+    display: flex;
+    margin-left: 130px;
+    margin-top: 20px;
+}
+.menu > ul > li{
+    padding: 0 30px;
+    position: relative;
+}
+.menu > ul > li > a{
+    font-weight: 500;
+    font-size: 16px;
+    display: block;
+    line-height: 20px;
+    position: relative;
+    height: 30px;
+}
+.menu > ul > li > a::after{
+    content: "";
+    height: 2px;
+    width: 0px;
+    background-color: tomato;
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    transition: all 0.5s ease-in-out;
+}
+.menu > ul > li > a:hover{
+    color: tomato;
+}
+.menu > ul > li > a:hover::after{
+    width: 100%;
+    color: tomato;
+}
+.others{
+    flex: 1;
+}
+.others > ul{
+    display: flex;
+}
+.others > ul > li{
+    padding: 0px 12px;
+}
+.others > ul > li > i{
+    cursor: pointer;
+}
+.others > ul > li > a{
+    padding-top: 10px;
+}
+.others > ul > li:first-child{
+    position: relative;
+}
+.others > ul > li:first-child input{
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid #333;
+    height: 10px;
+}
+.others > ul > li:first-child i{
+    position: absolute;
+    right: 12px;
+    padding-top: 10px;
+}
+
+#container{
+    padding-top: 20px ;
+    margin: 0px 100px;
+    border-bottom: 1px solid #d8c3c3;
+}
+.login{
+    width: 500px;
+}
+.login h3{
+    text-align: center;
+    text-transform: uppercase;
+}
+.message-1{
+    text-align: center;
+    margin: 15px 0px;
+    color: #57585A;
+}
+.form-group{
+    text-align: center;
+    margin: 15px 0px;
+}
+.form-control{
+    width: 70%;
+    height: 40px;
+
+}
+input[type=text],input[type=password]{
+    border: 1px solid #E7E8E9;
+    padding: 15px;
+    font-size: 14px;
+    color: #57585A;
+}
+.finish{
+    text-align: center;
+    margin: 15px;
+}
+.btn{
+    text-transform: uppercase;
+    font-weight: 600;
+}
+.btn-large {
+    padding: 12px 24px;
+    font-size: 16px;
+    line-height: 24px;
+    background-color: #221f20;
+    color: #f7f8f9;
+    border: 1px solid transparent;
+}
+.btn .btn-large{
+    width: 100%;
+}
+.form-link {
+    color: #221f20;
+    font-size: 14px;
+    line-height: 16px;
+    text-decoration: underline;
+    margin: 15px 80px;
+}
+.register{
+    width: 700px;
+}
+.title{
+    text-align: center;
+    text-transform: uppercase;
+}
+#main-register{
+    margin: 15px;
+}
+#main-register > div{
+    margin: 15px;
+}
+.form-check{
+    padding: 0 30px;
+    font-size: 17px;
+}
+.btt-register{
+    text-align: center;
+    margin: 15px;
+}
+.btn-large:hover{
+    background-color: white;
+    color: #221f20;
+    border: 1px solid black;
+    cursor: pointer;
+}
+#container{
+    display: flex;
+    padding-bottom: 25px;
+}
+.auth-block{
+    position: relative;
+    border-left: 1px solid #d8c3c3;
+    margin-left: 130px;
+}
+.login {
+    display: block;
+}
+.register{
+    display: block;
+    padding-left: 150px;
+}
+footer{
+    display: block;
+    margin-top: 20px;
+    padding-bottom: 30px;
+}
+.hipp{
+    font-size: 15px;
+    display: flex;
+}
+.upper-footer{
+    margin: 0 80px;
+    padding-left: 80px;
+}
+.upper-footer > ul > li{
+    text-indent: 40px ;
+}

@@ -1,0 +1,127 @@
+<div id="container">
+    <div class="auth-flex">
+        <div class="login">
+            <h3>Đăng nhập</h3>
+            <div class="main-login">
+                <div class="message-1">
+                    <p>Nếu bạn đã có tài khoản, hãy đăng nhập để trải nghiệm và mua hàng với thật nhiều ưu đãi hấp dẫn
+                    </p>
+                </div>
+                <form class="form-login" action="" method="post">
+                    <div class="form-group">
+                        <input class="form-control" type="text" placeholder="Email/SĐT" name="customer-account" required
+                            pattern="\S+.*">
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="password" placeholder="Mật khẩu" name="customer-password"
+                            required pattern="\S+.*">
+                    </div>
+
+                    <div class="forgive-pass">
+                        <a href="" class="form-link">Quên mật khẩu?</a>
+                    </div>
+                    <div class="finish">
+                        <a href="">
+                            <button class="btn btn-large">Đăng nhập</button>
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="auth-block">
+        <div class="register">
+            <h3 class="title">Khách hàng mới</h3>
+            <div class="message-1">
+                <p>
+                    Nếu bạn chưa có tài khoản, hãy nhập thông tin vào biểu mẫu dưới đây để đăng ký thành viên
+                </p>
+            </div>
+
+            {{!-- SIGN UP FORM --}}
+            <form action="auth/signup" method="post" name="form-register">
+                <div id="main-register">
+                    <div>
+                        <label for="fullname">
+                            Họ tên khách hàng:
+                            <span style="color:red">*</span><br>
+                        </label>
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="fullname" id="fullname" required
+                                pattern="\S+.*">
+                        </div>
+                    </div>
+                    <div>
+                        <label for="email">
+                            Email:
+                            <span style="color: red;">*</span><br>
+                        </label>
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="email" id="email" required pattern="\S+.*">
+                        </div>
+                    </div>
+                    <div>
+                        <label for="phone">
+                            Số điện thoại:
+                            <span style="color: red;">*</span><br>
+                        </label>
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="phone" id="phone" required pattern="\S+.*">
+                        </div>
+                    </div>
+                    <div>
+                        <label for="password">
+                            Mật khẩu:
+                            <span style="color: red;">*</span><br>
+                        </label>
+                        <div class="form-group">
+                            <input type="password" class="form-control" name="password" id="password" minlength="8"
+                                required pattern="\S+.*">
+                        </div>
+                    </div>
+                    <div>
+                        <label for="repassword">
+                            Nhập lại mật khẩu:
+                            <span style="color: red;">*</span><br>
+
+                        </label>
+                        <span id="message-password" style="color: red;display: none;">Xác nhận mật khẩu chưa chính
+                            xác!</span><br>
+                        <div class="form-group">
+
+                            <input type="password" class="form-control" id="repassword" name="repassword" minlength="8"
+                                required pattern="\S+.*">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label>
+                            Địa chỉ giao hàng:
+                            <span style="color: red;">*</span><br>
+                        </label>
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="address">
+                        </div>
+                    </div>
+
+                    <div class="form-check">
+                        <input type="checkbox" name="check-infor" id="defaultCheck" name="customer-degree" required
+                            pattern="\S+.*">
+                        <label for="defaultCheck" class="check-label">
+                            <span>
+                                Đồng ý với các điều khoản của tiệm
+                            </span>
+                        </label>
+                    </div>
+                    <div class="btt-register">
+                        <button id="btn_register" class="btn btn-large">Đăng ký</button>
+                    </div>
+                </div>
+            </form>
+
+
+        </div>
+    </div>
+</div>
+
+<script src="js/auth.js"></script>
