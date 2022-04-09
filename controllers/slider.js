@@ -31,10 +31,19 @@ const updateSlider = async(req, res, next) => {
     const result = await Slider.updateOne({ _id: id }, req.body)
     return res.status(200).json({ success: true })
 }
+const getSlider = async(req, res, next) => {
+    //console.log("HERE")
+    const _id = req.params.id
+    const slider = await Slider.find({ _id })
+
+    return res.status(200).json({ slider })
+}
+
 
 module.exports = {
     add,
     index,
     updateSlider,
-    deleteSlider
+    deleteSlider,
+    getSlider
 };

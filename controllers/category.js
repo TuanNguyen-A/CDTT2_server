@@ -32,10 +32,18 @@ const updateCategory = async(req, res, next) => {
     return res.status(200).json({ success: true })
 }
 
+const getCategory = async(req, res, next) => {
+    //console.log("HERE")
+    const _id = req.params.id
+    const category = await Category.find({ _id })
+
+    return res.status(200).json({ category })
+}
+
 module.exports = {
     add,
     index,
     deleteCategory,
-    updateCategory
-
+    updateCategory,
+    getCategory
 };
