@@ -26,7 +26,7 @@ const deleteCategory = async(req, res, next) => {
     return res.status(200).json({ success: true })
 }
 
-const update = async(req, res, next) => {
+const updateCategory = async(req, res, next) => {
     const id = req.params.id
     const result = await Category.updateOne({ _id: id }, req.body)
     return res.status(200).json({ success: true })
@@ -36,6 +36,6 @@ module.exports = {
     add,
     index,
     deleteCategory,
-    update
+    updateCategory
 
 };
