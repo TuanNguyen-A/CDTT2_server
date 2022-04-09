@@ -19,7 +19,23 @@ const add = async(req, res) => {
     return res.status(201).json({ success: true })
 }
 
+const deleteCategory = async(req, res, next) => {
+    const { id } = req.body
+    const category = await Category.findById(id)
+    await category.remove()
+    return res.status(200).json({ success: true })
+}
+
+const update = async(req, res, next) => {
+    const id = req.params.id
+    const result = await Category.updateOne({ _id: id }, req.body)
+    return res.status(200).json({ success: true })
+}
+
 module.exports = {
     add,
-    index
+    index,
+    deleteCategory,
+    update
+
 };
