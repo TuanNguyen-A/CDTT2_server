@@ -19,7 +19,13 @@ const add = async(req, res) => {
     return res.status(201).json({ success: true })
 }
 
+const deleteCate = async(req, res) => {
+    console.log("HERE", req.body)
+
+}
+
 module.exports = {
     add,
-    index
+    index,
+    deleteCate
 };

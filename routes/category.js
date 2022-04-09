@@ -8,5 +8,7 @@ const CategoryController = require('../controllers/category')
 
 router.route('/add').post(CategoryController.add)
 router.route('/list').post(CategoryController.index)
+router.route('/delete').post(CategoryController.deleteCate)
+
 
 module.exports = router;
