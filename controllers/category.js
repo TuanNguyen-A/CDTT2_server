@@ -19,13 +19,31 @@ const add = async(req, res) => {
     return res.status(201).json({ success: true })
 }
 
-const deleteCate = async(req, res) => {
-    console.log("HERE", req.body)
+const deleteCategory = async(req, res, next) => {
+    const { id } = req.body
+    const category = await Category.findById(id)
+    await category.remove()
+    return res.status(200).json({ success: true })
+}
 
+const updateCategory = async(req, res, next) => {
+    const id = req.params.id
+    const result = await Category.updateOne({ _id: id }, req.body)
+    return res.status(200).json({ success: true })
+}
+
+const getCategory = async(req, res, next) => {
+    //console.log("HERE")
+    const _id = req.params.id
+    const category = await Category.find({_id})
+
+    return res.status(200).json({ category })
 }
 
 module.exports = {
     add,
     index,
-    deleteCate
+    deleteCategory,
+    updateCategory,
+    getCategory
 };
