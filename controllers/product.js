@@ -7,7 +7,7 @@ const index = async(req, res) => {
 }
 
 const add = async(req, res) => {
-    const { name, content, image, array_image, price, price_sale, num, status } = req.body
+    const { name, category_id, content, image, array_image, price, price_sale, num, status } = req.body
 
     const foundProduct = await Product.findOne({ name })
 
@@ -26,7 +26,7 @@ const deleteProduct = async(req, res, next) => {
     return res.status(200).json({ success: true })
 }
 
-const update = async(req, res, next) => {
+const updateProduct = async(req, res, next) => {
     const id = req.params.id
     const result = await Product.updateOne({ _id: id }, req.body)
     return res.status(200).json({ success: true })
@@ -36,6 +36,6 @@ module.exports = {
     add,
     index,
     deleteProduct,
-    update
+    updateProduct
 
 };

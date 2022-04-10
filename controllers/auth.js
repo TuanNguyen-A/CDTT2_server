@@ -13,17 +13,17 @@ const encodedToken = (userID) => {
 }
 
 //[GET] /auth
-const index = function (req, res) {
+const index = function(req, res) {
     res.render('auth');
 }
 
 //[POST] /auth/signup
-const signUp = async (req, res, next) => {
+const signUp = async(req, res, next) => {
     const { fullName, email, phoneNumber, password, address } = req.body
 
     // Check if there is a user with the same user
     const foundUser = await User.findOne({ email })
-    
+
     if (foundUser) return res.status(403).json({ error: { message: 'Email is already in use.' } })
 
     // Create a new user
@@ -39,7 +39,7 @@ const signUp = async (req, res, next) => {
     return res.status(201).json({ success: true })
 }
 
-const signIn = async (req, res, next) => {
+const signIn = async(req, res, next) => {
     // Assign a token
     console.log("SIGN INNNNNNNNNNNNNNNNNN")
     const token = encodedToken(req.user._id)
