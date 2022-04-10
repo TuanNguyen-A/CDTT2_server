@@ -5,7 +5,7 @@ const CategorySchema = new Schema({
     name: {
         type: String
     },
-    active: {
+    status: {
         type: Number
     }
 }, {

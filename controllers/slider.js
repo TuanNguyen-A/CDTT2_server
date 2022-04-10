@@ -1,9 +1,9 @@
 const Slider = require("../models/Slider");
 
 const index = async(req, res) => {
-    const Sliders = await Slider.find({})
+    const sliders = await Slider.find({})
 
-    return res.status(200).json({ Sliders })
+    return res.status(200).json({ sliders })
 }
 
 const add = async(req, res) => {
@@ -32,9 +32,18 @@ const update = async(req, res, next) => {
     return res.status(200).json({ success: true })
 }
 
+const getSlider = async(req, res, next) => {
+    //console.log("HERE")
+    const _id = req.params.id
+    const slider = await Slider.find({_id})
+
+    return res.status(200).json({ slider })
+}
+
 module.exports = {
     add,
     index,
     update,
-    deleteSlider
+    deleteSlider,
+    getSlider
 };

@@ -6,6 +6,9 @@ const { validateBody, validateParam, schemas } = require('../helpers/routerHelpe
 const SliderController = require('../controllers/slider')
 
 router.route('/add').post(SliderController.add)
-router.route('/list').post(SliderController.index)
+router.route('/list').get(SliderController.index)
+router.route('/update/:id').post(SliderController.update)
+router.route('/delete').post(SliderController.deleteSlider)
+router.route('/:id').get(SliderController.getSlider)
 
 module.exports = router;
