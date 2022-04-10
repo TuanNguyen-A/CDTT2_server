@@ -20,8 +20,8 @@ const add = async(req, res) => {
 }
 
 const deleteProduct = async(req, res, next) => {
-    const { id } = req.body
-    const product = await Product.findById(id)
+    const _id = req.params.id
+    const product = await Product.findById({ _id })
     await product.remove()
     return res.status(200).json({ success: true })
 }
@@ -31,11 +31,17 @@ const updateProduct = async(req, res, next) => {
     const result = await Product.updateOne({ _id: id }, req.body)
     return res.status(200).json({ success: true })
 }
+const getProduct = async(req, res, next) => {
+    const _id = req.params.id
+    const product = await Product.find({ _id })
+    return res.status(200).json({ product })
+}
 
 module.exports = {
     add,
     index,
     deleteProduct,
-    updateProduct
+    updateProduct,
+    getProduct
 
 };
