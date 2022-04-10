@@ -33,7 +33,6 @@ const updateCategory = async(req, res, next) => {
 }
 
 const getCategory = async(req, res, next) => {
-    //console.log("HERE")
     const _id = req.params.id
     const category = await Category.find({ _id })
 
