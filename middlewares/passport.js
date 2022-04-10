@@ -46,7 +46,6 @@ passport.use(
         const isCorrectPassword = await user.isValidPassword(password);
         
         if (!isCorrectPassword) return done(null, false);
-        console.log("HERE")
 
         done(null, user);
       } catch (error) {

@@ -45,6 +45,7 @@ const schemas = {
         phoneNumber: Joi.string().min(2).required(),
         password: Joi.string().min(6).required(),
         address: Joi.string().min(2).required(),
+        role: Joi.string().min(2).required(),
     }),
 
     idSchema: Joi.object().keys({

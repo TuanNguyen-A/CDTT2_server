@@ -16,11 +16,13 @@ const UserSchema = new Schema({
     phoneNumber: {
         type: String
     },
-
     password: {
         type: String
     },
     address: {
+        type: String
+    },
+    role: {
         type: String
     }
 }, {

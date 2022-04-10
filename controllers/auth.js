@@ -19,7 +19,7 @@ const index = function(req, res) {
 
 //[POST] /auth/signup
 const signUp = async(req, res, next) => {
-    const { fullName, email, phoneNumber, password, address } = req.body
+    const { fullName, email, phoneNumber, password, address, role } = req.body
 
     // Check if there is a user with the same user
     const foundUser = await User.findOne({ email })
@@ -27,7 +27,7 @@ const signUp = async(req, res, next) => {
     if (foundUser) return res.status(403).json({ error: { message: 'Email is already in use.' } })
 
     // Create a new user
-    const newUser = new User({ fullName, email, phoneNumber, password, address })
+    const newUser = new User({ fullName, email, phoneNumber, password, address, role })
     await newUser.save()
     console.log("SAVE", newUser)
 
