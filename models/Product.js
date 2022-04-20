@@ -18,14 +18,10 @@ const ProductSchema = new Schema({
         type: String,
         required: true
     },
-    array_image: {
-        type: String
-    },
     price: {
         type: Number,
         required: true
     },
-
     price_sale: {
         type: Number
     },

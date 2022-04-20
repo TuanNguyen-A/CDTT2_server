@@ -24,7 +24,7 @@ const signUp = async(req, res, next) => {
     // Check if there is a user with the same user
     const foundUser = await User.findOne({ email })
 
-    if (foundUser) return res.status(403).json({ error: { message: 'Email is already in use.' } })
+    if (foundUser) return res.status(403).json({ message: 'Email is already in use.' })
 
     // Create a new user
     const newUser = new User({ fullName, email, phoneNumber, password, address, role })

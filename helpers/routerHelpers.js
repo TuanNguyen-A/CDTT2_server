@@ -44,7 +44,7 @@ const schemas = {
         email: Joi.string().email().required(),
         phoneNumber: Joi.string().min(2).required(),
         password: Joi.string().min(6).required(),
-        address: Joi.string().min(2).required(),
+        address: Joi.string().valid('').optional(),
         role: Joi.string().min(2).required(),
     }),
 

@@ -11,7 +11,7 @@ const add = async(req, res) => {
 
     const foundCategory = await Category.findOne({ name })
 
-    if (foundCategory) return res.status(403).json({ error: { message: 'Category is already in exist.' } })
+    if (foundCategory) return res.status(403).json({ message: 'Category is already in exist.' })
 
     const newCategory = new Category({ name, status })
     await newCategory.save()
@@ -28,8 +28,19 @@ const deleteCategory = async(req, res, next) => {
 
 const updateCategory = async(req, res, next) => {
     const id = req.params.id
+    const { name } = req.body
+    const foundCategory = await Category.findOne({ name })
+    if (foundCategory) return res.status(403).json({ message: 'Category is already in exist.' })
+
     const result = await Category.updateOne({ _id: id }, req.body)
     return res.status(200).json({ success: true })
+}
+
+const searchCategory = async(req, res, next) =>{
+    const search = req.params.search
+    const categories = await Category.find({ name: { $regex: search } })
+    console.log(categories)
+    return res.status(200).json({ categories })
 }
 
 const getCategory = async(req, res, next) => {
@@ -44,5 +55,6 @@ module.exports = {
     index,
     deleteCategory,
     updateCategory,
-    getCategory
+    getCategory,
+    searchCategory
 };

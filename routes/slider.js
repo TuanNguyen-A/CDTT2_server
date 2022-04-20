@@ -10,5 +10,6 @@ router.route('/list').get(SliderController.index)
 router.route('/update/:id').post(SliderController.updateSlider)
 router.route('/delete').post(SliderController.deleteSlider)
 router.route('/:id').get(SliderController.getSlider)
+router.route('/search/:search').get(SliderController.searchSlider)
 
 module.exports = router;

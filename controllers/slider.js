@@ -11,7 +11,7 @@ const add = async(req, res) => {
 
     const foundSlider = await Slider.findOne({ name })
 
-    if (foundSlider) return res.status(403).json({ error: { message: 'Slider name is already in exist.' } })
+    if (foundSlider) return res.status(403).json({ message: 'Slider name is already in exist.' })
 
     const newSlider = new Slider({ name, url, image, content, status })
     await newSlider.save()
@@ -20,6 +20,7 @@ const add = async(req, res) => {
 }
 
 const deleteSlider = async(req, res, next) => {
+    
     const { id } = req.body
     const slider = await Slider.findById(id)
     await slider.remove()
@@ -27,6 +28,13 @@ const deleteSlider = async(req, res, next) => {
 }
 
 const updateSlider = async(req, res, next) => {
+    const { name } = req.body
+
+    const foundSlider = await Slider.findOne({ name })
+
+    if (foundSlider) return res.status(403).json({ message: 'Slider name is already in exist.' })
+
+    
     const id = req.params.id
     const result = await Slider.updateOne({ _id: id }, req.body)
     return res.status(200).json({ success: true })
@@ -40,10 +48,17 @@ const getSlider = async(req, res, next) => {
     return res.status(200).json({ slider })
 }
 
+const searchSlider = async(req, res, next) =>{
+    const search = req.params.search
+    const sliders = await Slider.find({ name: { $regex: search } })
+    return res.status(200).json({ sliders })
+}
+
 module.exports = {
     add,
     index,
     updateSlider,
     deleteSlider,
-    getSlider
+    getSlider,
+    searchSlider
 };
