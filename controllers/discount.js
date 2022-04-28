@@ -35,7 +35,11 @@ const updateDiscount = async(req, res, next) => {
     console.log(code)
     const foundDiscount = await Discount.findOne({ code })
 
-    if (foundDiscount) return res.status(403).json({  message: 'Discount is already in exist.' } )
+    if(foundDiscount){
+        console.log("Testtt",foundDiscount)
+        updatedDiscount = await Discount.findById(id)
+        if (updatedDiscount.code != code) return res.status(403).json({ message: 'Discount is already in exist.' })
+    }
 
     const result = await Discount.updateOne({ _id: id }, req.body)
     return res.status(200).json({ success: true })

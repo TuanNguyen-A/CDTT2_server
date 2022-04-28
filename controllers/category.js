@@ -30,7 +30,12 @@ const updateCategory = async(req, res, next) => {
     const id = req.params.id
     const { name } = req.body
     const foundCategory = await Category.findOne({ name })
-    if (foundCategory) return res.status(403).json({ message: 'Category is already in exist.' })
+
+    if(foundCategory){
+        console.log("Testtt",foundCategory)
+        updatedCategory = await Category.findById(id)
+        if (updatedCategory.name != name) return res.status(403).json({ message: 'Category is already in exist.' })
+    }
 
     const result = await Category.updateOne({ _id: id }, req.body)
     return res.status(200).json({ success: true })

@@ -20,4 +20,6 @@ router.route('/signUp').post(validateBody(schemas.authSignUpSchema),AuthControll
 
 router.route('/signIn').post(validateBody(schemas.authSignInSchema), passport.authenticate('local', { session: false }), AuthController.signIn)
 
+router.route('/secret').get(passport.authenticate('jwt', { session: false }), AuthController.secret)
+
 module.exports = router;

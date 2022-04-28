@@ -1,5 +1,6 @@
 const Product = require("../models/Product");
 const Category = require("../models/Category");
+const Slider = require("../models/Slider");
 
 const index = async(req, res) => {
     const products = await Product.find({})
@@ -30,6 +31,16 @@ const deleteProduct = async(req, res, next) => {
 
 const updateProduct = async(req, res, next) => {
     const id = req.params.id
+
+    const { name } = req.body
+    const foundProduct = await Product.findOne({ name })
+
+    if(foundProduct){
+        console.log("Testtt",foundProduct)
+        updatedProduct = await Product.findById(id)
+        if (updatedProduct.name != name) return res.status(403).json({ message: 'Product is already in exist.' })
+    }
+
     const result = await Product.updateOne({ _id: id }, req.body)
     return res.status(200).json({ success: true })
 }
@@ -56,6 +67,31 @@ const searchProductByCategory = async(req, res, next) =>{
     return res.status(200).json({ products })
 }
 
+const homePage = async(req, res, next)=>{
+    console.log('SUCCESSSS')
+    //GOLD PRODUCTS
+    const goldCategories = await Category.find({ name: 'Vàng' })
+    goldCategory = goldCategories[0]
+    const goldProducts = await Product.find({ category_id: goldCategory._id })
+
+    //GOLD BANNER
+    const goldSlider = await Slider.find({ name: 'Vàng Banner' })
+
+    //DIAMOND PRODUCT
+
+    //DIAMOND BANNER
+
+    //NEW PRODUCTS
+    const newProducts = await Product.find({})
+
+    result = {
+        goldProducts,
+        goldSlider,
+        newProducts
+    }
+    return res.status(200).json({ result })
+}
+
 module.exports = {
     add,
     index,
@@ -63,5 +99,6 @@ module.exports = {
     updateProduct,
     getProduct,
     searchProduct,
-    searchProductByCategory
+    searchProductByCategory,
+    homePage
 };

@@ -8,11 +8,13 @@ const index = async(req, res) => {
 
 const updateUser = async(req, res, next) => {
     const { email } = req.body
-
-    // Check if there is a user with the same user
     const foundUser = await User.findOne({ email })
 
-    if (foundUser) return res.status(403).json({  message: 'Email is already in use.' })
+    if(foundUser){
+        console.log("Testtt",foundUser)
+        updatedUser = await User.findById(id)
+        if (updatedUser.email != email) return res.status(403).json({ message: 'Email is already in exist.' })
+    }
 
     const id = req.params.id
     const result = await User.updateOne({ _id: id }, req.body)

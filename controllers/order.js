@@ -59,8 +59,8 @@ const confirmOrder = async (req, res, next) => {
 }
 
 const updateOrder = async(req, res, next) => {
-    
     const id = req.params.id
+
     const result = await Product.updateOne({ _id: id }, req.body)
     return res.status(200).json({ success: true })
 }

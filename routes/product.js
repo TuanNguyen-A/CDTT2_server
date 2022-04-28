@@ -6,6 +6,7 @@ const { validateBody, validateParam, schemas } = require('../helpers/routerHelpe
 const ProductController = require('../controllers/product')
 
 
+router.route('/homepage').get(ProductController.homePage)
 router.route('/add').post(ProductController.add)
 router.route('/list').get(ProductController.index)
 router.route('/update/:id').post(ProductController.updateProduct)

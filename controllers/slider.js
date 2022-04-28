@@ -28,14 +28,17 @@ const deleteSlider = async(req, res, next) => {
 }
 
 const updateSlider = async(req, res, next) => {
-    const { name } = req.body
+    const id = req.params.id
 
+    const { name } = req.body
     const foundSlider = await Slider.findOne({ name })
 
-    if (foundSlider) return res.status(403).json({ message: 'Slider name is already in exist.' })
+    if(foundSlider){
+        console.log("Testtt",foundSlider)
+        updatedSlider = await Slider.findById(id)
+        if (updatedSlider.name != name) return res.status(403).json({ message: 'Slider is already in exist.' })
+    }
 
-    
-    const id = req.params.id
     const result = await Slider.updateOne({ _id: id }, req.body)
     return res.status(200).json({ success: true })
 }
