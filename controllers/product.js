@@ -67,6 +67,14 @@ const searchProductByCategory = async(req, res, next) =>{
     return res.status(200).json({ products })
 }
 
+const searchProductByCategoryId = async(req, res, next) =>{
+    const id = req.params.search
+
+    const products = await Product.find({ category_id: id })
+    console.log(products)
+    return res.status(200).json({ products })
+}
+
 const homePage = async(req, res, next)=>{
     console.log('SUCCESSSS')
     //GOLD PRODUCTS
@@ -100,5 +108,6 @@ module.exports = {
     getProduct,
     searchProduct,
     searchProductByCategory,
+    searchProductByCategoryId,
     homePage
 };

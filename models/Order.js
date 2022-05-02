@@ -5,18 +5,32 @@ const OrderSchema = new Schema({
     id: {
         type: String
     },
-    customerId: {
-        type: Schema.Types.ObjectId,
-        ref: 'User'
-    },
     orderProducts: [{
         type: Schema.Types.ObjectId,
-        ref: ''
+        ref: 'OrderProduct'
     }],
+    fullName: {
+        type: String
+    },
+    email: {
+        type: String
+    },
+    phoneNumber: {
+        type: String
+    },
+    address: {
+        type: String
+    },
+    note: {
+        type: String
+    },
     status: {
         type: Number
     },
     discount: {
+        type: Number
+    },
+    transportFee: {
         type: Number
     },
     totalPrice:{

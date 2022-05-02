@@ -6,6 +6,7 @@ const sliderRouter = require('./slider')
 const discountRouter = require('./discount')
 const orderRouter = require('./order')
 const adminRouter = require('./admin')
+const feedbackRouter = require('./feedback')
 
 const ProductController = require('../controllers/product')
 
@@ -18,6 +19,7 @@ function route(app) {
     app.use('/discount', discountRouter);
     app.use('/order', orderRouter);
     app.use('/admin', adminRouter);
+    app.use('/feedback', feedbackRouter);
 
     //app.use('/', userRouter);
 }

@@ -14,5 +14,6 @@ router.route('/delete/:id').post(ProductController.deleteProduct)
 router.route('/:id').get(ProductController.getProduct)
 router.route('/search/:search').get(ProductController.searchProduct)
 router.route('/search_by_category/:search').get(ProductController.searchProductByCategory)
+router.route('/search_by_category_id/:search').get(ProductController.searchProductByCategoryId)
 
 module.exports = router;

@@ -50,7 +50,8 @@ const signIn = async (req, res, next) => {
 
 const secret = async (req, res, next) => {
     console.log(req.user)
-    return res.status(200).json({ resources: true })
+    account = req.user
+    return res.status(200).json({ resources: true , account})
 };
 
 module.exports = {

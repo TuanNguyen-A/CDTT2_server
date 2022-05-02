@@ -67,7 +67,19 @@ const updateOrder = async(req, res, next) => {
 
 const getOrder = async (req, res, next) => {
     const _id = req.params.id
-    const order = await Order.find({ _id })
+    order = await Order.find({ _id }).populate('orderProducts')
+
+    temp = []
+
+    console.log("HEREEE", order)
+
+    // order.orderProducts.forEach(async (orderProductId) => {
+    //     orderProduct = await OrderProduct.find({ orderProductId })
+    //     temp.push(orderProduct)
+    // });
+
+    //order.orderProducts = temp
+
     return res.status(200).json({ order })
 }
 
