@@ -13,3 +13,4 @@ router.route('/:id').get(SliderController.getSlider)
 router.route('/search/:search').get(SliderController.searchSlider)
 
 module.exports = router;
+
