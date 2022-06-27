@@ -1,6 +1,5 @@
 const Product = require("../models/Product");
 const Category = require("../models/Category");
-const Slider = require("../models/Slider");
 
 const index = async(req, res) => {
     const products = await Product.find({})
@@ -29,6 +28,25 @@ const deleteProduct = async(req, res, next) => {
     return res.status(200).json({ success: true })
 }
 
+const buyProduct = async (req, res, next) => {
+    const _id = req.params.id
+
+    const { quantity } = req.body
+
+    productList = await Product.find({ _id });
+    product = productList[0]
+
+    console.log("BUY", quantity)
+    console.log("PRODUCT HERE", product)
+    numTemp = product.num - quantity
+    Product.updateOne({ _id: _id}, {$set: {num: numTemp}}, function (err,res) {
+        if (err) throw err;
+        console.log('update success: record');
+    });
+
+    return res.status(200).json({ success: true })
+}
+
 const updateProduct = async(req, res, next) => {
     const id = req.params.id
 
@@ -36,9 +54,7 @@ const updateProduct = async(req, res, next) => {
     const foundProduct = await Product.findOne({ name })
 
     if(foundProduct){
-        console.log("Testtt",foundProduct)
-        updatedProduct = await Product.findById(id)
-        if (updatedProduct.name != name) return res.status(403).json({ message: 'Product is already in exist.' })
+        return res.status(403).json({ message: 'Product is already in exist.' })
     }
 
     const result = await Product.updateOne({ _id: id }, req.body)
@@ -76,25 +92,10 @@ const searchProductByCategoryId = async(req, res, next) =>{
 }
 
 const homePage = async(req, res, next)=>{
-    console.log('SUCCESSSS')
-    //GOLD PRODUCTS
-    const goldCategories = await Category.find({ name: 'Vàng' })
-    goldCategory = goldCategories[0]
-    const goldProducts = await Product.find({ category_id: goldCategory._id })
-
-    //GOLD BANNER
-    const goldSlider = await Slider.find({ name: 'Vàng Banner' })
-
-    //DIAMOND PRODUCT
-
-    //DIAMOND BANNER
-
     //NEW PRODUCTS
     const newProducts = await Product.find({})
 
     result = {
-        goldProducts,
-        goldSlider,
         newProducts
     }
     return res.status(200).json({ result })
@@ -103,6 +104,7 @@ const homePage = async(req, res, next)=>{
 module.exports = {
     add,
     index,
+    buyProduct,
     deleteProduct,
     updateProduct,
     getProduct,

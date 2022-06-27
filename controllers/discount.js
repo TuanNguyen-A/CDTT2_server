@@ -28,6 +28,22 @@ const deleteDiscount = async(req, res, next) => {
     return res.status(200).json({ success: true })
 }
 
+const applyDiscount = async (req, res, next) => {
+    const _id = req.params.id
+
+    discountList = await Discount.find({ _id });
+    discount = discountList[0]
+
+    console.log("DISCOUNT HERE", discount)
+    numTemp = discount.purchase_limit - 1
+    Discount.updateOne({ _id: _id}, {$set: {purchase_limit: numTemp}}, function (err,res) {
+        if (err) throw err;
+        console.log('update success: record');
+    });
+
+    return res.status(200).json({ success: true })
+}
+
 const updateDiscount = async(req, res, next) => {
     const id = req.params.id
 
@@ -62,6 +78,7 @@ module.exports = {
     add,
     index,
     deleteDiscount,
+    applyDiscount,
     updateDiscount,
     getDiscount,
     searchDiscount

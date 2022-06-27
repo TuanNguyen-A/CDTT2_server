@@ -7,6 +7,7 @@ const DiscountController = require('../controllers/discount')
 
 router.route('/add').post(DiscountController.add)
 router.route('/list').get(DiscountController.index)
+router.route('/apply/:id').post(DiscountController.applyDiscount)
 router.route('/update/:id').post(DiscountController.updateDiscount)
 router.route('/delete').post(DiscountController.deleteDiscount)
 router.route('/:id').get(DiscountController.getDiscount)
